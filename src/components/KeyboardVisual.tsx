@@ -40,11 +40,31 @@ const KeyboardVisual = ({ learnedKeys, currentNewKeys, activeKey }: KeyboardVisu
           ))}
         </div>
       ))}
-      {/* Spacebar */}
-      <div className={`w-64 h-10 rounded-md flex items-center justify-center text-sm transition-all duration-150 border ${
-        activeKey === " " ? "bg-key-active text-primary-foreground border-key-active scale-[0.98]" : "bg-key-bg text-key-text border-border"
-      }`}>
-        SPACE
+      {/* Bottom row with shifts and spacebar */}
+      <div className="flex gap-1.5 items-center">
+        <div className={`w-[72px] h-10 rounded-md flex items-center justify-center text-xs font-medium transition-all duration-150 border ${
+          learnedKeys.includes("LShift")
+            ? currentNewKeys.includes("LShift")
+              ? "bg-key-current/20 text-key-current border-key-current/50 animate-pulse-soft"
+              : "bg-key-learned/30 text-correct border-key-learned/50"
+            : "bg-key-bg text-key-text border-border"
+        }`}>
+          L SHIFT
+        </div>
+        <div className={`w-64 h-10 rounded-md flex items-center justify-center text-sm transition-all duration-150 border ${
+          activeKey === " " ? "bg-key-active text-primary-foreground border-key-active scale-[0.98]" : "bg-key-bg text-key-text border-border"
+        }`}>
+          SPACE
+        </div>
+        <div className={`w-[72px] h-10 rounded-md flex items-center justify-center text-xs font-medium transition-all duration-150 border ${
+          learnedKeys.includes("RShift")
+            ? currentNewKeys.includes("RShift")
+              ? "bg-key-current/20 text-key-current border-key-current/50 animate-pulse-soft"
+              : "bg-key-learned/30 text-correct border-key-learned/50"
+            : "bg-key-bg text-key-text border-border"
+        }`}>
+          R SHIFT
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,8 @@ export interface Lesson {
   newKeys: string[];
   allKeys: string[];
   title: string;
+  explanation: string;
+  tips: string[];
   paragraph: string;
 }
 
@@ -12,6 +14,8 @@ export const lessons: Lesson[] = [
     newKeys: ["f", "j"],
     allKeys: ["f", "j"],
     title: "Home Row Start",
+    explanation: "Place your index fingers on F and J — feel the small bumps on those keys. These are your anchor keys. Your fingers should always return here after pressing other keys.",
+    tips: ["Your left index finger rests on F", "Your right index finger rests on J", "Keep your wrists slightly elevated"],
     paragraph: "fff jjj fjf jfj ffj jjf fjfj jfjf ffjj jjff fjfjfj jfjfjf fff jjj fjfj",
   },
   {
@@ -19,6 +23,8 @@ export const lessons: Lesson[] = [
     newKeys: ["d", "k"],
     allKeys: ["f", "j", "d", "k"],
     title: "Expanding Home",
+    explanation: "Now add your middle fingers. D is pressed by your left middle finger, and K by your right middle finger. Keep your index fingers on F and J.",
+    tips: ["Left middle finger → D", "Right middle finger → K", "Don't look at the keyboard!"],
     paragraph: "ddd kkk dkd kdk fdk jdk dfk kjf dkfj fkdj djfk kjdf dkfj fjdk",
   },
   {
@@ -26,6 +32,8 @@ export const lessons: Lesson[] = [
     newKeys: ["s", "l"],
     allKeys: ["f", "j", "d", "k", "s", "l"],
     title: "Outer Reach",
+    explanation: "Ring fingers join the party. S is pressed by your left ring finger, L by your right ring finger. These fingers are weaker — practice will strengthen them.",
+    tips: ["Left ring finger → S", "Right ring finger → L", "Keep movements small and precise"],
     paragraph: "sss lll sls lsl fds jkl sldk fdsl jkls dslf kjds slfd lkjf sdlk",
   },
   {
@@ -33,6 +41,8 @@ export const lessons: Lesson[] = [
     newKeys: ["a", ";"],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";"],
     title: "Full Home Row",
+    explanation: "Your pinkies now reach A and semicolon (;). This completes the home row — the most important row on the keyboard. Every other key is reached from this position.",
+    tips: ["Left pinky → A", "Right pinky → ;", "The home row is your base — always return here"],
     paragraph: "aaa ;;; a;a ;a; asdf jkl; fdsa ;lkj asdf jkl; ask dad falls flask salad",
   },
   {
@@ -40,6 +50,8 @@ export const lessons: Lesson[] = [
     newKeys: ["g", "h"],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h"],
     title: "Center Keys",
+    explanation: "G and H sit in the center of the keyboard. Reach for G with your left index finger and H with your right index finger. Your index fingers handle the most keys.",
+    tips: ["Left index reaches right → G", "Right index reaches left → H", "Return to F and J after each press"],
     paragraph: "ggg hhh ghg hgh flag half gash dash hash glad shag lash shall flash gala",
   },
   {
@@ -47,6 +59,8 @@ export const lessons: Lesson[] = [
     newKeys: ["e", "i"],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i"],
     title: "First Vowels",
+    explanation: "Time to reach up! E is pressed by your left middle finger reaching up from D. I is pressed by your right middle finger reaching up from K. Vowels are the most common letters.",
+    tips: ["Left middle finger reaches up from D → E", "Right middle finger reaches up from K → I", "Return to home row after each reach"],
     paragraph: "see die fie hie lie silk like file side hide seek feel heel deal sigh high",
   },
   {
@@ -54,6 +68,8 @@ export const lessons: Lesson[] = [
     newKeys: ["r", "u"],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u"],
     title: "Upper Reach",
+    explanation: "R is pressed by your left index finger reaching up from F. U is pressed by your right index finger reaching up from J. These are very common letters in English.",
+    tips: ["Left index reaches up from F → R", "Right index reaches up from J → U", "Speed comes from accuracy, not rushing"],
     paragraph: "rule sure fire dire huge sure ride guide surge ridge rule figure like argued",
   },
   {
@@ -61,6 +77,8 @@ export const lessons: Lesson[] = [
     newKeys: ["t", "y"],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y"],
     title: "Index Stretch",
+    explanation: "T and Y require your index fingers to stretch up and inward. Left index reaches up-right for T, right index reaches up-left for Y. These stretches take practice.",
+    tips: ["Left index stretches up-right → T", "Right index stretches up-left → Y", "Accuracy over speed — always"],
     paragraph: "they that this yell yet style stay duty tray dirty fifty kitty thirty dirty",
   },
   {
@@ -68,6 +86,8 @@ export const lessons: Lesson[] = [
     newKeys: ["w", "o"],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o"],
     title: "Ring Fingers Up",
+    explanation: "W is pressed by your left ring finger reaching up from S. O is pressed by your right ring finger reaching up from L. Ring finger reaches take practice — be patient.",
+    tips: ["Left ring reaches up from S → W", "Right ring reaches up from L → O", "Ring fingers are naturally weaker — extra practice helps"],
     paragraph: "work word two wood woke flow show slow grow throw wrote whole world tour",
   },
   {
@@ -75,6 +95,8 @@ export const lessons: Lesson[] = [
     newKeys: ["q", "p"],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p"],
     title: "Pinky Reach",
+    explanation: "Q is pressed by your left pinky reaching up from A. P is pressed by your right pinky reaching up from ;. Pinky reaches are the hardest — go slow and stay accurate.",
+    tips: ["Left pinky reaches up from A → Q", "Right pinky reaches up from ; → P", "Pinkies are weakest — take your time"],
     paragraph: "quip equip put poke quote power peque topple pupil quest pilot quiet proud",
   },
   {
@@ -82,6 +104,8 @@ export const lessons: Lesson[] = [
     newKeys: ["v", "n"],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p", "v", "n"],
     title: "Lower Row Start",
+    explanation: "Now we go below the home row. V is pressed by your left index finger reaching down from F. N is pressed by your right index finger reaching down from J.",
+    tips: ["Left index reaches down from F → V", "Right index reaches down from J → N", "Keep other fingers on the home row"],
     paragraph: "never even given seven prove drove nerve novel vine revive invoice prevent given",
   },
   {
@@ -89,6 +113,8 @@ export const lessons: Lesson[] = [
     newKeys: ["b", "m"],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p", "v", "n", "b", "m"],
     title: "Bottom Middle",
+    explanation: "B is pressed by your left index finger reaching down-right. M is pressed by your right index finger reaching down-right from J. These are center-bottom keys.",
+    tips: ["Left index stretches down-right → B", "Right index reaches down → M", "Your index fingers handle the biggest area"],
     paragraph: "maybe number member bottom submit blame climb timber marble mumble humble stumble mob",
   },
   {
@@ -96,6 +122,8 @@ export const lessons: Lesson[] = [
     newKeys: ["c", ","],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p", "v", "n", "b", "m", "c", ","],
     title: "C and Comma",
+    explanation: "C is pressed by your left middle finger reaching down from D. Comma (,) is pressed by your right middle finger reaching down from K. Punctuation is essential for real typing.",
+    tips: ["Left middle reaches down from D → C", "Right middle reaches down from K → ,", "Practice punctuation — it appears in real text constantly"],
     paragraph: "come, once, since, voice, choice, force, prince, twice, chance, circle, concert, become,",
   },
   {
@@ -103,14 +131,63 @@ export const lessons: Lesson[] = [
     newKeys: ["x", "."],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p", "v", "n", "b", "m", "c", ",", "x", "."],
     title: "X and Period",
+    explanation: "X is pressed by your left ring finger reaching down from S. Period (.) is pressed by your right ring finger reaching down from L. Sentences need periods!",
+    tips: ["Left ring reaches down from S → X", "Right ring reaches down from L → .", "End every sentence with a period"],
     paragraph: "next. text. mix. fix. exist. expect. box. complex. extreme. extra. six. taxi. exact.",
   },
   {
     day: 15,
     newKeys: ["z", "/"],
     allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p", "v", "n", "b", "m", "c", ",", "x", ".", "z", "/"],
-    title: "Final Keys",
+    title: "Final Letters",
+    explanation: "Z is pressed by your left pinky reaching down from A. Slash (/) is pressed by your right pinky reaching down from ;. You now know every letter key!",
+    tips: ["Left pinky reaches down from A → Z", "Right pinky reaches down from ; → /", "You've learned the full alphabet!"],
     paragraph: "the quick brown fox jumps over the lazy dog. size, prize, breeze, and freeze. yes/no, left/right, up/down.",
+  },
+  {
+    day: 16,
+    newKeys: ["LShift"],
+    allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p", "v", "n", "b", "m", "c", ",", "x", ".", "z", "/", "LShift"],
+    title: "Left Shift — Right Hand Capitals",
+    explanation: "To capitalize letters typed by your RIGHT hand, hold Left Shift with your left pinky. Left Shift + J = J, Left Shift + K = K, etc. Always use the opposite hand's shift key.",
+    tips: ["Left pinky holds Left Shift", "Use for right-hand letters: H, J, K, L, U, I, O, P, Y, N, M", "Keep your right hand on the home row while shifting"],
+    paragraph: "Jack and Jill ran up the Hill. Nick can Jump High. Polly Likes Ice. Young Otters Play.",
+  },
+  {
+    day: 17,
+    newKeys: ["RShift"],
+    allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p", "v", "n", "b", "m", "c", ",", "x", ".", "z", "/", "LShift", "RShift"],
+    title: "Right Shift — Left Hand Capitals",
+    explanation: "To capitalize letters typed by your LEFT hand, hold Right Shift with your right pinky. Right Shift + F = F, Right Shift + D = D, etc. This completes your shift technique.",
+    tips: ["Right pinky holds Right Shift", "Use for left-hand letters: A, S, D, F, G, Q, W, E, R, T, B, C, V, X, Z", "Opposite hand rule: left letters → Right Shift"],
+    paragraph: "Fred and Grace Study Art. Wendy Reads Every Book. Dave Called Six Times. Zara Gave Cream.",
+  },
+  {
+    day: 18,
+    newKeys: [],
+    allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p", "v", "n", "b", "m", "c", ",", "x", ".", "z", "/", "LShift", "RShift"],
+    title: "Mixed Capitals Practice",
+    explanation: "Now practice using both Shift keys in real sentences. Remember: use Left Shift for right-hand capitals and Right Shift for left-hand capitals. Focus on smooth, alternating shifts.",
+    tips: ["Capitalize the first word of every sentence", "Capitalize proper nouns (names, places)", "Practice switching between Left and Right Shift fluidly"],
+    paragraph: "The Quick Brown Fox Jumped Over The Lazy Dog. Sarah Met Peter In London. Every Friday We Visit Grandma.",
+  },
+  {
+    day: 19,
+    newKeys: [],
+    allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p", "v", "n", "b", "m", "c", ",", "x", ".", "z", "/", "LShift", "RShift"],
+    title: "Real Sentences",
+    explanation: "Time to type real English sentences with proper capitalization and punctuation. This is what real typing looks like. Focus on flow and rhythm.",
+    tips: ["Start each sentence with a capital letter", "Use periods, commas, and semicolons naturally", "Aim for a steady rhythm rather than bursts of speed"],
+    paragraph: "The weather is nice today. Can we go for a walk? I think so, but bring a jacket. It might get cold later.",
+  },
+  {
+    day: 20,
+    newKeys: [],
+    allKeys: ["f", "j", "d", "k", "s", "l", "a", ";", "g", "h", "e", "i", "r", "u", "t", "y", "w", "o", "q", "p", "v", "n", "b", "m", "c", ",", "x", ".", "z", "/", "LShift", "RShift"],
+    title: "Speed Challenge",
+    explanation: "You know all the keys and both shifts. This final lesson is a speed and accuracy challenge. Type the paragraph as fast as you can while staying above 80% accuracy. Good luck!",
+    tips: ["Trust your muscle memory", "Let your fingers flow without thinking about individual keys", "Speed will come naturally with accuracy"],
+    paragraph: "Programming is the art of telling a computer what to do. Every great software project starts with a simple idea. Write clean code, test often, and never stop learning.",
   },
 ];
 
