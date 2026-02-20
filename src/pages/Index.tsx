@@ -5,6 +5,7 @@ import TypingArea from "@/components/TypingArea";
 import LessonSelector from "@/components/LessonSelector";
 import StatsDisplay from "@/components/StatsDisplay";
 import AuthDialog from "@/components/AuthDialog";
+import LessonExplanation from "@/components/LessonExplanation";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/hooks/useProgress";
 import { Keyboard } from "lucide-react";
@@ -81,6 +82,8 @@ const Index = () => {
                 New keys: <span className="text-key-current">{lesson.newKeys.map((k) => k.toUpperCase()).join(", ")}</span>
               </h2>
             </div>
+
+            <LessonExplanation explanation={lesson.explanation} tips={lesson.tips} />
 
             <TypingArea
               text={lesson.paragraph}
