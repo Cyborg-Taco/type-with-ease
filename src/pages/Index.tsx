@@ -4,11 +4,14 @@ import KeyboardVisual from "@/components/KeyboardVisual";
 import TypingArea from "@/components/TypingArea";
 import LessonSelector from "@/components/LessonSelector";
 import StatsDisplay from "@/components/StatsDisplay";
+import AuthDialog from "@/components/AuthDialog";
+import { useAuth } from "@/hooks/useAuth";
+import { useProgress } from "@/hooks/useProgress";
 import { Keyboard } from "lucide-react";
 
 const Index = () => {
-  const [currentDay, setCurrentDay] = useState(1);
-  const [completedDays, setCompletedDays] = useState<number[]>([]);
+  const { user } = useAuth();
+  const { currentDay, completedDays, updateCurrentDay, addCompletedDay, loaded } = useProgress(user);
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [result, setResult] = useState<{ wpm: number; accuracy: number } | null>(null);
 
@@ -20,14 +23,14 @@ const Index = () => {
 
   const handleComplete = useCallback((wpm: number, accuracy: number) => {
     setResult({ wpm, accuracy });
-    if (accuracy >= 80 && !completedDays.includes(currentDay)) {
-      setCompletedDays((prev) => [...prev, currentDay]);
+    if (accuracy >= 80) {
+      addCompletedDay(currentDay);
     }
-  }, [currentDay, completedDays]);
+  }, [currentDay, addCompletedDay]);
 
   const handleNext = () => {
     const nextDay = Math.min(currentDay + 1, lessons.length);
-    setCurrentDay(nextDay);
+    updateCurrentDay(nextDay);
     setResult(null);
   };
 
@@ -36,28 +39,29 @@ const Index = () => {
   };
 
   const handleSelectLesson = (day: number) => {
-    setCurrentDay(day);
+    updateCurrentDay(day);
     setResult(null);
   };
 
+  if (!loaded) return null;
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b border-border px-6 py-4">
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           <Keyboard size={24} className="text-primary" />
           <h1 className="text-xl font-sans font-bold text-foreground">
             Type<span className="text-primary glow-green">Flow</span>
           </h1>
-          <span className="ml-auto text-sm text-muted-foreground">
+          <span className="ml-auto mr-4 text-sm text-muted-foreground">
             {completedDays.length}/{lessons.length} lessons completed
           </span>
+          <AuthDialog />
         </div>
       </header>
 
       <div className="max-w-6xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
-          {/* Sidebar */}
           <aside className="order-2 lg:order-1">
             <LessonSelector
               currentDay={currentDay}
@@ -66,9 +70,7 @@ const Index = () => {
             />
           </aside>
 
-          {/* Main content */}
           <main className="order-1 lg:order-2 space-y-8">
-            {/* Lesson header */}
             <div>
               <div className="flex items-baseline gap-3 mb-1">
                 <span className="text-sm text-primary font-medium">Day {lesson.day}</span>
@@ -80,7 +82,6 @@ const Index = () => {
               </h2>
             </div>
 
-            {/* Typing area */}
             <TypingArea
               text={lesson.paragraph}
               onComplete={handleComplete}
@@ -88,7 +89,6 @@ const Index = () => {
               isActive={!result}
             />
 
-            {/* Results */}
             <StatsDisplay
               wpm={result?.wpm ?? null}
               accuracy={result?.accuracy ?? null}
@@ -97,7 +97,6 @@ const Index = () => {
               onRetry={handleRetry}
             />
 
-            {/* Keyboard */}
             <div className="flex flex-col items-center gap-3 pt-4">
               <p className="text-xs text-muted-foreground font-sans">Keyboard</p>
               <KeyboardVisual
