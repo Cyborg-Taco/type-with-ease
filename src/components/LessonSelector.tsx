@@ -13,7 +13,7 @@ const LessonSelector = ({ currentDay, completedDays, onSelect }: LessonSelectorP
   return (
     <div className="w-full">
       <h2 className="text-lg font-sans font-semibold text-foreground mb-4">Course Lessons</h2>
-      <div className="space-y-1.5 max-h-[500px] overflow-y-auto pr-2">
+      <div className="space-y-1.5 max-h-[600px] overflow-y-auto pr-2">
         {lessons.map((lesson) => {
           const isCompleted = completedDays.includes(lesson.day);
           const isLocked = lesson.day > maxUnlocked;
@@ -49,7 +49,11 @@ const LessonSelector = ({ currentDay, completedDays, onSelect }: LessonSelectorP
                   Day {lesson.day}: {lesson.title}
                 </div>
                 <div className="text-xs text-muted-foreground">
-                  New: <span className="text-key-current">{lesson.newKeys.join(", ").toUpperCase()}</span>
+                  {lesson.newKeys.length > 0 ? (
+                    <>New: <span className="text-key-current">{lesson.newKeys.join(", ").toUpperCase()}</span></>
+                  ) : (
+                    <span className="text-muted-foreground">Review</span>
+                  )}
                 </div>
               </div>
 
