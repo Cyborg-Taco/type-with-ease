@@ -8,11 +8,13 @@ import AuthDialog from "@/components/AuthDialog";
 import LessonExplanation from "@/components/LessonExplanation";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/hooks/useProgress";
-import { Keyboard } from "lucide-react";
+import { useAdmin } from "@/hooks/useAdmin";
+import { Keyboard, Unlock } from "lucide-react";
 
 const Index = () => {
   const { user } = useAuth();
-  const { currentDay, completedDays, updateCurrentDay, addCompletedDay, loaded } = useProgress(user);
+  const { currentDay, completedDays, updateCurrentDay, addCompletedDay, loaded, unlockAll } = useProgress(user);
+  const { isAdmin } = useAdmin(user);
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [result, setResult] = useState<{ wpm: number; accuracy: number } | null>(null);
 
@@ -44,6 +46,11 @@ const Index = () => {
     setResult(null);
   };
 
+  const handleUnlockAll = () => {
+    unlockAll();
+    setResult(null);
+  };
+
   if (!loaded) return null;
 
   return (
@@ -57,6 +64,15 @@ const Index = () => {
           <span className="ml-auto mr-4 text-sm text-muted-foreground">
             {completedDays.length}/{lessons.length} lessons completed
           </span>
+          {isAdmin && (
+            <button
+              onClick={handleUnlockAll}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-accent/20 text-accent-foreground border border-accent/30 hover:bg-accent/30 transition-colors"
+            >
+              <Unlock size={14} />
+              Unlock All
+            </button>
+          )}
           <AuthDialog />
         </div>
       </header>
@@ -79,7 +95,11 @@ const Index = () => {
                 <span className="text-sm text-muted-foreground">{lesson.title}</span>
               </div>
               <h2 className="text-2xl font-sans font-bold text-foreground">
-                New keys: <span className="text-key-current">{lesson.newKeys.map((k) => k.toUpperCase()).join(", ")}</span>
+                {lesson.newKeys.length > 0 ? (
+                  <>New keys: <span className="text-key-current">{lesson.newKeys.map((k) => k.toUpperCase()).join(", ")}</span></>
+                ) : (
+                  <span>Practice & Review</span>
+                )}
               </h2>
             </div>
 

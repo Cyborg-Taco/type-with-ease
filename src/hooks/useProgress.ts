@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { lessons } from "@/data/lessons";
 import type { User } from "@supabase/supabase-js";
 
 const LOCAL_KEY = "typeflow_progress";
@@ -97,5 +98,11 @@ export function useProgress(user: User | null) {
     [persist, currentDay]
   );
 
-  return { currentDay, completedDays, updateCurrentDay, addCompletedDay, loaded };
+  const unlockAll = useCallback(() => {
+    const allDays = lessons.map((_, i) => i + 1);
+    setCompletedDays(allDays);
+    persist(currentDay, allDays);
+  }, [persist, currentDay]);
+
+  return { currentDay, completedDays, updateCurrentDay, addCompletedDay, unlockAll, loaded };
 }
